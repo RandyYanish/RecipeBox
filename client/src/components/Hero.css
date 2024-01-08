@@ -1,0 +1,89 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+.explore-btn {
+  cursor: pointer;
+  position: relative;
+  transition: all 1s;
+}
+
+.explore-btn::after,
+.explore-btn::before {
+  content: ' ';
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  border: 0px solid var(--metal);
+  transition: all 1s;
+}
+
+.explore-btn::after {
+  top: -1px;
+  left: -1px;
+  border-top: 5px solid var(--metal);
+  border-left: 5px solid var(--metal);
+}
+
+.explore-btn::before {
+  bottom: -1px;
+  right: -1px;
+  border-bottom: 5px solid var(--metal);
+  border-right: 5px solid var(--metal);
+}
+
+.explore-btn:hover {
+  border-top-right-radius: -1px;
+  border-bottom-left-radius: -1px;
+}
+
+.explore-btn:hover::before,
+.explore-btn:hover::after {
+  width: 110%;
+  height: 100%;
+}
+
+#Hero {
+  height: auto;
+  width: auto;
+  position: relative;
+}
+
+.typewriter {
+  position: relative;
+  width: auto;
+  margin: 4 auto;
+  border-right: 2px solid rgba(255, 255, 255, 0.75);
+  font-size: 160%;
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+/* Animation */
+.anim-typewriter {
+  animation:
+    typewriter 3s steps(20) 1s both normal,
+    blinkTextCursor 1000ms infinite normal;
+}
+
+@keyframes typewriter {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 7em;
+  }
+}
+
+@keyframes blinkTextCursor {
+  from {
+    border-right-color: #213861;
+  }
+
+  to {
+    border-right-color: transparent;
+  }
+}

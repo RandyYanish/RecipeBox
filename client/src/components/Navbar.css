@@ -1,0 +1,24 @@
+.nav-list-item {
+  position: relative;
+  padding: 5px;
+}
+
+.nav-list-item a::after {
+  content: '';
+  width: 0%;
+  height: 2px;
+  background-color: rgb(216, 249, 57);
+  position: absolute;
+  left: 0;
+  bottom: 0px;
+  transition: width 0.2s;
+}
+
+.nav-list-item a.active::after,
+.nav-list-item a:hover::after {
+  width: 100%;
+}
+
+.nav-list-item a:hover::after {
+  background-color: var(--ice-dark);
+}

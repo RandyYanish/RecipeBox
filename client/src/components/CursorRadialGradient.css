@@ -1,0 +1,17 @@
+.gradient-style {
+  background: -webkit-radial-gradient(
+      rgba(0, 247, 255, 0.1),
+      transparent 70%,
+      transparent 10%
+    ),
+    transparent;
+}
+
+.gradient-style:is(.dark .dark\:bg-radial-blue) {
+  background: -webkit-radial-gradient(
+      rgba(33, 56, 97, 0.3),
+      transparent 70%,
+      transparent 10%
+    ),
+    transparent;
+}
