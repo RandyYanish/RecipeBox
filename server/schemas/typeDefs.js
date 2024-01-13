@@ -9,6 +9,16 @@ const typeDefs = gql`
     password: String!
     phone_number: String
     first_time_log: Boolean
+    upvotedRecipes: [ID!]!
+    downvotedRecipes: [ID!]!
+  }
+  type Recipe {
+    _id: ID!
+    title: String!
+    ingredients: [String!]!
+    instructions: String!
+    cotes: Int!
+    createdBy: User!
   }
   type Auth {
     token: ID!
@@ -33,6 +43,11 @@ const typeDefs = gql`
     password: String!
     phone_number: String
   }
+  input RecipeInput {
+    title: String!
+    ingredients: [String!]!
+    instructions: String!
+  }
 
   type Query {
     getAllUsers: [User!]!
@@ -42,6 +57,11 @@ const typeDefs = gql`
   type Mutation {
     createUser(userInput: CreateUserInput!): Auth
     loginUser(email: String!, password: String!): Token!
+    addRecipe(recipeInput: RecipeInput!): Recipe!
+    updateRecipe(recipeId: ID!, recipeInput: RecipeInput!): Recipe!
+    deleteRecipe(recipeId: ID!): Recipe!
+    upvoteRecipe(recipeId: ID!): Recipe!
+    downvoteRecipe(recipeId: ID!): Recipe!
   }
 `;
 

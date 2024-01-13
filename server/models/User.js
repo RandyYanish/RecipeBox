@@ -28,6 +28,7 @@ const userSchema = new Schema({
   },
   password: {
     type: String,
+    select: false,
     required: true,
     minlength: 5,
   },
@@ -43,6 +44,18 @@ const userSchema = new Schema({
         `${props.value} is not a valid phone number! Format: xxx-xxx-xxxx`,
     },
   },
+  upvotedRecipes: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Recipe',
+    },
+  ],
+  downvotedRecipes: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Recipe',
+    },
+  ],
 });
 
 // Set up pre-save middleware to create password

@@ -13,7 +13,7 @@ module.exports = {
       return req;
     }
     try {
-      const { data } = jwt.verify(token, sercre, { maxAge: expiration });
+      const { data } = jwt.verify(token, secret, { maxAge: expiration });
       req.user = data;
     } catch {
       console.lof("Invalid token");
