@@ -52,7 +52,6 @@ const resolvers = {
       }
     },
     createUser: async (_, { userInput }) => {
-      console.log({ userInput });
       try {
         const foundUser = await User.findOne({ email: userInput.email });
         if (foundUser) {
