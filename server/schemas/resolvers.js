@@ -67,7 +67,7 @@ const resolvers = {
         return token;
       } catch (error) {
         let err = error.message || "Error creating account";
-        throw new Error(error);
+        throw new Error(err);
       }
     },
     updateUser: async (_, { userId, userInput }, context) => {
@@ -79,10 +79,20 @@ const resolvers = {
     },
     // RECIPE MUTATIONS
     addRecipe: async (_, { recipeInput }) => {
-      const recipe = new Recipe(recipeInput);
-      recipe.createdBy = context.user._id;
-      await recipe.save();
-      return recipe;
+      if (!context.user) {
+        throw new Error('Authentication required to add a recipe');
+      }
+      try {
+        const recipe = new Recipe({
+          ...recipeInput,
+          createdBy: context.user._id,
+        });
+        await recipe.save();
+        return recipe;
+      } catch (error) {
+        console.error('Error adding recipe:', error);
+        throw new Error('Error adding recipe');
+      }
     },
     updateRecipe: async (_, { recipeId, recipeInput }, context) => {
       const recipe = await Recipe.findOneAndUpdate(

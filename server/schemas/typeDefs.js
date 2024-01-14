@@ -17,7 +17,7 @@ const typeDefs = gql`
     title: String!
     ingredients: [String!]!
     instructions: String!
-    cotes: Int!
+    votes: Int!
     createdBy: User!
   }
   type Auth {
@@ -53,10 +53,13 @@ const typeDefs = gql`
     getAllUsers: [User!]!
     getUser(userId: ID!): User
     authUser(token: String!): AuthUser!
+    getRecipe(recipeId: ID!): Recipe
+    getAllRecipes: [Recipe!]!
   }
   type Mutation {
     createUser(userInput: CreateUserInput!): Auth
     loginUser(email: String!, password: String!): Token!
+    updateUser(userId: ID!, userInput: CreateUserInput!): User!
     addRecipe(recipeInput: RecipeInput!): Recipe!
     updateRecipe(recipeId: ID!, recipeInput: RecipeInput!): Recipe!
     deleteRecipe(recipeId: ID!): Recipe!

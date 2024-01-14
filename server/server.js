@@ -9,6 +9,7 @@ const db = require('./config/connection');
 const { createServer } = require('http');
 const { makeExecutableSchema } = require('@graphql-tools/schema');
 const { SubscriptionServer } = require('subscriptions-transport-ws');
+const { execute, subscribe } = require('graphql');
 
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -49,16 +50,16 @@ app.use(
   })
 );
 
-// Serve up static assets
-app.use("/images", express.static(path.join(__dirname, '../client/images')));
+// Serve up static assets (uncomment when fron-end is built)
+// app.use("/images", express.static(path.join(__dirname, '../client/images')));
 
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, '../client/build')));
-}
+// if (process.env.NODE_ENV === 'production') {
+//   app.use(express.static(path.join(__dirname, '../client/build')));
+// }
 
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../client/build/index.html'));
-});
+// app.get('*', (req, res) => {
+//   res.sendFile(path.join(__dirname, '../client/build/index.html'));
+// });
 
 
 // Create a new instance of an Apollo server with the GraphQL schema
