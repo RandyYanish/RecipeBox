@@ -2,8 +2,8 @@ import React from 'react';
 
 function ErrorPage() {
   return (
-    <div>
-      Error
+    <div className='flex justify-center align-middle items-center'>
+      <h1 className='text-white'>Error</h1>
     </div>
   )
 };

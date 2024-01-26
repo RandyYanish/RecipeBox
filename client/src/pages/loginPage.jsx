@@ -3,8 +3,8 @@ import React from 'react';
 function Login() {
 
   return (
-    <div>
-      Login
+    <div className='flex justify-center align-middle items-center'>
+      <h1 className="text-white">Login</h1>
     </div>
   );
 };

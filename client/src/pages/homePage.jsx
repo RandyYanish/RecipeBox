@@ -1,9 +1,5 @@
 import React, { useState } from 'react';
-import Hero from '../components/Hero';
-import AboutIntro from '../components/About-intro';
-import CVDownload from '../components/CV-Download';
-import Resume from '../components/Resume';
-import Projects from '../components/Projects';
+import CVDownload from '../components/DownloadButton';
 import ContactButton from '../components/ContactButton';
 import ContactFormModal from '../components/ContactFormModal';
 
@@ -15,20 +11,10 @@ function HomePage() {
 
   return (
     <div className=''>
-      <div id='Home' className='my-4'>
-        <Hero />
-      </div>
-      <div id='About'>
-        <AboutIntro />
-      </div>
-      <div id='Skills'>
-        <Resume />
+      <div id='Skills' className='p-4 m-4'>
         <CVDownload />
       </div>
-      <div id='Projects'>
-        <Projects />
-      </div>
-      <div id='Contact'>
+      <div id='Contact' className='p-4 m-4'>
         <ContactButton openModal={openModal}/>
         <ContactFormModal isOpen={isModalOpen} closeModal={closeModal}/>
       </div>
